@@ -1,0 +1,238 @@
+Website Page Content
+Career Guide: General Physician
+(MD General Medicine / Internal Medicine)
+🖼️ Background Image (Website Use)
+
+Recommended background image theme:
+
+An Indian doctor in a white coat interacting with an adult or elderly patient
+
+Hospital or clinic setting
+
+Soft blue / white tones
+
+Semi-transparent overlay for text readability
+
+Usage tip for developers:
+
+Use the image as a full-width hero background
+
+Add a dark or blue gradient overlay (50–70%) to keep text readable
+
+Keep the doctor–patient interaction visible to reflect compassion and professionalism
+
+🔹 Hero Section (Top of the Page)
+Become a General Physician
+MD General Medicine / Internal Medicine
+
+Description (Hero Text):
+Internal Medicine, also known as MD General Medicine, is one of the most respected and essential medical specialties. It focuses on the comprehensive care of adult patients, combining strong diagnostic skills with long-term patient relationships.
+
+Call-to-Action Buttons (Optional):
+
+Explore the Career Path
+
+Is This Right for You?
+
+🔹 What Is Internal Medicine?
+Who Is a General Physician (Internist)?
+
+An Internal Medicine physician, commonly called a General Physician, is a medical specialist trained to diagnose, treat, and prevent diseases in adult patients.
+
+They handle everything from routine health check-ups to complex medical conditions involving multiple organs.
+
+Key Highlights
+
+✅ Experts in diagnosing complex medical cases
+
+✅ Known as the “Doctor’s Doctor”
+
+✅ Provide long-term care for adult patients
+
+✅ Focus exclusively on adult and elderly healthcare
+
+🔹 Core Responsibilities
+What Does a General Physician Do?
+
+A General Physician manages a wide range of medical responsibilities in both hospitals and clinics.
+
+Main Duties
+
+Clinical Diagnosis
+Evaluating symptoms through physical exams, patient history, lab tests, and imaging.
+
+Chronic Disease Management
+Long-term treatment of conditions like diabetes, hypertension, and heart disease.
+
+Acute Care Treatment
+Managing sudden illnesses such as fever, infections, pneumonia, and stomach disorders.
+
+Preventive Healthcare
+Vaccinations, routine health screenings, and early disease detection.
+
+Care Coordination
+Referring patients to specialists and managing overall treatment plans.
+
+🔹 Conditions Commonly Treated
+Diseases Managed by Internal Medicine Doctors
+
+General Physicians treat illnesses affecting almost all internal organ systems.
+
+Common Categories
+
+Chronic Diseases
+
+Diabetes
+
+Asthma & COPD
+
+Thyroid disorders
+
+Arthritis
+
+Chronic kidney disease
+
+Infectious Diseases
+
+Tuberculosis
+
+Hepatitis
+
+HIV
+
+Viral and bacterial infections
+
+Digestive Disorders
+
+Gastritis
+
+GERD
+
+Liver diseases
+
+Peptic ulcers
+
+Mental Health Conditions
+
+Anxiety
+
+Depression
+
+Insomnia
+
+Neurological Conditions
+
+Migraine
+
+Sleep disorders
+
+Peripheral neuropathy
+
+🔹 Medical Procedures Performed
+Common Procedures in Internal Medicine
+
+General Physicians perform several diagnostic and minor therapeutic procedures.
+
+Diagnostic Procedures
+
+ECG (Electrocardiogram)
+
+Blood and urine tests
+
+Pulmonary function tests
+
+Minor Procedures
+
+Abscess drainage
+
+Foreign body removal
+
+Skin biopsies
+
+Simple fracture management
+
+Therapeutic Procedures
+
+Joint injections
+
+Insulin management
+
+Pain management injections
+
+Hospital Procedures
+
+Nasogastric tube insertion
+
+Venous and arterial blood sampling
+
+Basic airway management
+
+🔹 Educational Path in India
+How to Become a General Physician
+
+MBBS Degree
+Complete Bachelor of Medicine and Bachelor of Surgery.
+
+MD in General Medicine
+
+3 years of postgraduate training
+
+Focus on adult medicine and clinical practice
+
+Medical Certification
+Registration and recognition as a specialist.
+
+Subspecialization (Optional)
+Further training in:
+
+Cardiology
+
+Gastroenterology
+
+Nephrology
+
+Oncology
+
+Endocrinology
+
+🔹 Ethics & Professional Values
+Core Principles of Internal Medicine
+
+General Physicians follow strong ethical standards to ensure patient safety and trust.
+
+Beneficence – Act in the patient’s best interest
+
+Non-maleficence – Do no harm
+
+Respect for Autonomy – Honor patient decisions
+
+Confidentiality – Protect patient privacy
+
+🔹 Career Opportunities & Work Settings
+Where Can a General Physician Work?
+
+🏥 Hospitals (Hospitalist roles)
+
+🏥 Private clinics & medical centers
+
+🧓 Rehabilitation & geriatric care facilities
+
+💻 Telemedicine & online consultations
+
+🔹 Why Choose MD General Medicine?
+Benefits of This Career
+
+Broad medical knowledge
+
+Strong clinical and diagnostic skills
+
+Long-term patient relationships
+
+High demand across India and abroad
+
+Gateway to super-specialization
+
+🔹 Closing Section (Footer Highlight)
+A Rewarding Career in Adult Healthcare
+
+Choosing MD General Medicine means choosing a career that combines intellectual challenge, patient care, and lifelong learning.

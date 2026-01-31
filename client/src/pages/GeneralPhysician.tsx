@@ -1,110 +1,87 @@
 import { Layout } from "@/components/Layout";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, ArrowLeft, Heart, Stethoscope, BookOpen, ShieldCheck, GraduationCap, Briefcase } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowLeft,
+  Search,
+  Stethoscope,
+  GraduationCap,
+  Briefcase,
+} from "lucide-react";
 import { Link } from "wouter";
+
+const TOTAL_FRAMES = 176;
 
 export default function GeneralPhysician() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  // Map scroll progress to image index (1 to 6)
-  const imageIndex = useTransform(scrollYProgress, [0, 1], [1, 6]);
   const [currentFrame, setCurrentFrame] = useState(1);
 
-  useEffect(() => {
-    return imageIndex.onChange((latest) => {
-      setCurrentFrame(Math.round(latest));
-    });
-  }, [imageIndex]);
+  /* ================= SCROLL-DRIVEN ANIMATION ================= */
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
 
-  const content = {
-    title: "General Physician (MD General Medicine)",
-    subtitle: "Internal Medicine Specialist",
-    description: "Internal medicine specialist diagnosing and treating adult diseases in hospitals/clinics. Focuses on comprehensive care, combining strong diagnostic skills with long-term patient relationships.",
-    sections: [
-      {
-        title: "What is Internal Medicine?",
-        icon: Stethoscope,
-        items: [
-          "Experts in diagnosing complex medical cases",
-          "Known as the 'Doctor's Doctor'",
-          "Provide long-term care for adult patients",
-          "Focus exclusively on adult and elderly healthcare"
-        ]
-      },
-      {
-        title: "Core Responsibilities",
-        icon: Heart,
-        items: [
-          "Clinical Diagnosis & Physical Exams",
-          "Chronic Disease Management (Diabetes, Hypertension)",
-          "Acute Care Treatment (Fever, Infections)",
-          "Preventive Healthcare & Screenings",
-          "Care Coordination with Specialists"
-        ]
-      },
-      {
-        title: "Educational Path",
-        icon: GraduationCap,
-        items: [
-          "MBBS Degree (Bachelor of Medicine & Surgery)",
-          "MD in General Medicine (3-year specialization)",
-          "Medical Certification & Registration",
-          "Optional Subspecialization (Cardiology, Oncology, etc.)"
-        ]
-      },
-      {
-        title: "Ethics & Values",
-        icon: ShieldCheck,
-        items: [
-          "Beneficence (Acting in patient's best interest)",
-          "Non-maleficence (Do no harm)",
-          "Respect for Autonomy",
-          "Patient Confidentiality"
-        ]
-      }
-    ]
-  };
+  const frameIndex = useTransform(scrollYProgress, [0, 1], [1, TOTAL_FRAMES]);
+
+  useEffect(() => {
+    return frameIndex.onChange((latest) => {
+      const frame = Math.min(TOTAL_FRAMES, Math.max(1, Math.round(latest)));
+      setCurrentFrame(frame);
+    });
+  }, [frameIndex]);
+
+  useEffect(() => {
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image();
+      img.src = `/animation/general-physician/frame-${i}.jpg`;
+    }
+  }, []);
 
   return (
     <Layout>
-      <div ref={containerRef} className="relative min-h-[300vh]">
-        {/* Sticky Animation Section */}
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img 
-              src={`/animation/general-physician/frame-${currentFrame}.jpg`}
-              alt="Medical Professional Animation"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-background" />
-          </div>
+      {/* ================= ANIMATION SECTION ================= */}
+      <div ref={containerRef} className="relative h-[350vh]">
+        <div className="sticky top-0 h-screen overflow-hidden">
+          <img
+            src={`/animation/general-physician/frame-${currentFrame}.jpg`}
+            alt="MD General Medicine Animation"
+            className="w-full h-full object-cover"
+          />
 
-          <div className="relative z-10 text-center text-white px-4 max-w-4xl">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-background" />
+
+          <div className="absolute inset-0 flex items-center justify-center text-center text-white px-4">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.9 }}
+              className="max-w-4xl"
             >
               <Link href="/career-path">
-                <Button variant="ghost" className="mb-6 text-white hover:bg-white/10">
-                  <ArrowLeft className="mr-2 h-4 w-4" /> Back to Careers
+                <Button
+                  variant="ghost"
+                  className="mb-8 text-white hover:bg-white/10"
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Careers
                 </Button>
               </Link>
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">{content.title}</h1>
-              <p className="text-xl md:text-2xl text-blue-200 mb-8 font-medium">{content.subtitle}</p>
+
+              <h1 className="text-5xl md:text-6xl font-bold mb-4">
+                MD General Medicine
+              </h1>
+              <p className="text-xl md:text-2xl text-blue-200 mb-10 font-medium">
+                General Physician / Internal Medicine
+              </p>
+
               <div className="flex items-center justify-center gap-4 text-sm uppercase tracking-widest text-white/70">
                 <span>Scroll to Explore</span>
                 <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ duration: 1.6, repeat: Infinity }}
                   className="w-1 h-8 bg-white/30 rounded-full flex justify-center p-0.5"
                 >
                   <div className="w-full h-2 bg-white rounded-full" />
@@ -113,86 +90,170 @@ export default function GeneralPhysician() {
             </motion.div>
           </div>
         </div>
+      </div>
 
-        {/* Content Section */}
-        <div className="relative z-20 bg-background pt-20 pb-32">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <div className="space-y-8">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <h2 className="text-3xl font-bold mb-6">Career Overview</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {content.description}
-                  </p>
-                  <div className="flex gap-4 mt-8">
-                    <Badge variant="secondary" className="px-4 py-2 text-base">12-35 LPA Range</Badge>
-                    <Badge variant="outline" className="px-4 py-2 text-base">Government & Private</Badge>
-                  </div>
-                </motion.div>
+      {/* ================= CONTENT SECTION ================= */}
+      <div className="relative bg-background pt-32 pb-40">
+        <div className="max-w-6xl mx-auto px-4 space-y-28">
 
-                <div className="grid grid-cols-1 gap-6">
-                  {content.sections.map((section, idx) => (
-                    <motion.div
-                      key={section.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.1 }}
-                    >
-                      <Card className="border-border/50 hover:border-primary/30 transition-colors">
-                        <CardHeader className="flex flex-row items-center space-x-4 pb-2">
-                          <div className="p-2 bg-primary/10 rounded-lg">
-                            <section.icon className="h-6 w-6 text-primary" />
-                          </div>
-                          <CardTitle className="text-xl">{section.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <ul className="space-y-2">
-                            {section.items.map((item, i) => (
-                              <li key={i} className="flex items-start gap-2 text-muted-foreground">
-                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+          {/* HERO SUMMARY */}
+          <section className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 blur-3xl rounded-3xl" />
+            <div className="relative bg-card border rounded-3xl p-10 shadow-xl">
+              <h2 className="text-4xl font-bold mb-4">
+                MD General Medicine (Internal Medicine)
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl">
+                MD General Medicine is a <strong>3-year postgraduate course after MBBS</strong>
+                that trains doctors to diagnose, treat, and manage adult diseases,
+                long-term conditions, and complex multi-system illnesses with a
+                holistic and evidence-based approach.
+              </p>
 
-              <div className="sticky top-24 space-y-8">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="bg-primary text-primary-foreground overflow-hidden border-none shadow-2xl">
-                    <div className="p-8 relative">
-                      <Briefcase className="absolute top-4 right-4 h-24 w-24 opacity-10" />
-                      <h3 className="text-2xl font-bold mb-4">Ready to Start?</h3>
-                      <p className="text-primary-foreground/80 mb-8 text-lg">
-                        Take the first step towards becoming a General Physician. Explore job markets and requirements.
-                      </p>
-                      <Button 
-                        size="lg" 
-                        variant="secondary" 
-                        className="w-full font-bold h-14 text-lg rounded-xl shadow-lg"
-                        onClick={() => window.open(`https://www.google.com/search?q=MD+General+Medicine+jobs+India`, '_blank')}
-                      >
-                        <Search className="mr-2 h-5 w-5" /> Search Available Jobs
-                      </Button>
-                    </div>
-                  </Card>
-                </motion.div>
+              <div className="flex flex-wrap gap-4 mt-8">
+                <Badge variant="secondary" className="px-4 py-2 text-base">
+                  3-Year Residency
+                </Badge>
+                <Badge variant="outline" className="px-4 py-2 text-base">
+                  After MBBS
+                </Badge>
+                <Badge variant="outline" className="px-4 py-2 text-base">
+                  Internal Medicine
+                </Badge>
               </div>
             </div>
-          </div>
+          </section>
+
+          {/* INFO GRID */}
+          <section className="grid md:grid-cols-2 gap-10">
+            <div className="bg-card rounded-3xl border p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-3">
+                <Stethoscope className="h-6 w-6 text-primary" />
+                What is MD General Medicine?
+              </h3>
+              <ul className="space-y-3 text-muted-foreground">
+                <li>• Broad clinical specialty focusing on adult medicine.</li>
+                <li>• Covers cardiology, pulmonology, gastroenterology, nephrology,
+                    endocrinology, neurology, infectious diseases, rheumatology and more.</li>
+                <li>• Residency includes wards, ICU, OPD, emergency and specialty clinics.</li>
+                <li>• Strong academic training with seminars, journal clubs and research.</li>
+              </ul>
+            </div>
+
+            <div className="bg-card rounded-3xl border p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-3">
+                <GraduationCap className="h-6 w-6 text-primary" />
+                Eligibility & Entrance (India)
+              </h3>
+              <ul className="space-y-3 text-muted-foreground">
+                <li>• MBBS from NMC/MCI-recognized college.</li>
+                <li>• 1-year compulsory internship completed.</li>
+                <li>• State Medical Council registration.</li>
+                <li>• Admission via <strong>NEET-PG</strong> or <strong>INI-CET</strong>.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* TRAINING + SYLLABUS */}
+          <section className="grid md:grid-cols-2 gap-10">
+            <div className="bg-card rounded-3xl border p-8">
+              <h3 className="text-2xl font-semibold mb-4">
+                Course Structure & Training
+              </h3>
+              <ul className="space-y-3 text-muted-foreground">
+                <li>• 3 years full-time residency with graded responsibility.</li>
+                <li>• Ward, ICU, emergency and specialty postings.</li>
+                <li>• Case presentations, seminars, journal clubs.</li>
+                <li>• Mandatory thesis/dissertation and logbook.</li>
+              </ul>
+            </div>
+
+            <div className="bg-card rounded-3xl border p-8">
+              <h3 className="text-2xl font-semibold mb-4">
+                Typical Syllabus Highlights
+              </h3>
+              <ul className="space-y-3 text-muted-foreground">
+                <li>• Diabetes, hypertension, heart disease, asthma, COPD, TB.</li>
+                <li>• Renal, liver, neurological, autoimmune diseases.</li>
+                <li>• Sepsis, tropical infections, HIV.</li>
+                <li>• ICU skills: ventilators, fluids, shock, ACLS/BLS.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* CAREER */}
+          <section className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-12 border">
+            <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Briefcase className="h-7 w-7 text-primary" />
+              Career After MD General Medicine
+            </h3>
+            <div className="grid md:grid-cols-2 gap-8 text-muted-foreground">
+              <ul className="space-y-3">
+                <li>• Consultant physician in hospitals</li>
+                <li>• Senior resident / Assistant Professor</li>
+                <li>• ICU & emergency medicine roles</li>
+                <li>• Telemedicine physician</li>
+              </ul>
+              <ul className="space-y-3">
+                <li>• Private practice / clinics</li>
+                <li>• Clinical research</li>
+                <li>• Hospital administration</li>
+                <li>• DM / FNB super-specialization</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* SNAPSHOT TABLE */}
+          <section>
+            <h3 className="text-3xl font-bold mb-6">
+              Snapshot Table – Quick Revision
+            </h3>
+            <div className="overflow-hidden rounded-2xl border shadow-sm">
+              <table className="w-full">
+                <tbody className="divide-y">
+                  {[
+                    ["Course name", "MD General Medicine / MD (Medicine)"],
+                    ["Level", "Postgraduate (after MBBS)"],
+                    ["Duration", "3 years full-time residency"],
+                    ["Eligibility", "MBBS + Internship + SMC registration"],
+                    ["Entrance", "NEET-PG, INI-CET"],
+                    ["Main focus", "Adult medicine & non-surgical management"],
+                    ["Training", "Ward / OPD / ICU, emergency, thesis"],
+                    ["Core skills", "Clinical diagnosis, ICU & emergency care"],
+                    ["After MD", "Consultant, teaching, research, telemedicine"],
+                    ["Higher studies", "DM / FNB super-specialties"],
+                  ].map(([a, b]) => (
+                    <tr key={a}>
+                      <td className="px-6 py-4 font-medium bg-muted/30 w-1/3">
+                        {a}
+                      </td>
+                      <td className="px-6 py-4 text-muted-foreground">
+                        {b}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section className="text-center pt-10">
+            <Button
+              size="lg"
+              className="px-12 py-6 text-lg rounded-2xl shadow-xl"
+              onClick={() =>
+                window.open(
+                  "https://www.google.com/search?q=MD+General+Medicine+jobs+India",
+                  "_blank"
+                )
+              }
+            >
+              <Search className="mr-2 h-5 w-5" />
+              Explore Job Opportunities
+            </Button>
+          </section>
+
         </div>
       </div>
     </Layout>

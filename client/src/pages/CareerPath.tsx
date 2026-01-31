@@ -62,6 +62,11 @@ export default function CareerPathPage() {
       setLocation("/career/general-physician");
       return;
     }
+
+if (node.id === "diploma-pharmacy") {
+    setLocation("/career/diploma-pharmacy");
+    return;
+  }
     setHistory((prev) => [...prev, { id: node.id, label: node.label, node }]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
